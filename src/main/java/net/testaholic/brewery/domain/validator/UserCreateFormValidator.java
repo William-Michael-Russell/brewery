@@ -1,7 +1,7 @@
-package eu.kielczewski.example.domain.validator;
+package net.testaholic.brewery.domain.validator;
 
-import eu.kielczewski.example.domain.UserCreateForm;
-import eu.kielczewski.example.service.user.UserService;
+import net.testaholic.brewery.domain.UserCreateForm;
+import net.testaholic.brewery.service.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

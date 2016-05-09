@@ -1,6 +1,6 @@
-package eu.kielczewski.example.repository;
+package net.testaholic.brewery.repository;
 
-import eu.kielczewski.example.domain.User;
+import net.testaholic.brewery.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

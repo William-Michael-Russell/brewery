@@ -1,8 +1,8 @@
-package eu.kielczewski.example.service.user;
+package net.testaholic.brewery.service.user;
 
-import eu.kielczewski.example.domain.User;
-import eu.kielczewski.example.domain.UserCreateForm;
-import eu.kielczewski.example.repository.UserRepository;
+import net.testaholic.brewery.domain.User;
+import net.testaholic.brewery.domain.UserCreateForm;
+import net.testaholic.brewery.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

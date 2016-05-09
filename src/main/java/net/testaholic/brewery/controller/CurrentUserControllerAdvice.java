@@ -1,6 +1,6 @@
-package eu.kielczewski.example.controller;
+package net.testaholic.brewery.controller;
 
-import eu.kielczewski.example.domain.CurrentUser;
+import net.testaholic.brewery.domain.CurrentUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;

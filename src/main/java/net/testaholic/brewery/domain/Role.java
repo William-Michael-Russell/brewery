@@ -1,4 +1,4 @@
-package eu.kielczewski.example.domain;
+package net.testaholic.brewery.domain;
 
 public enum Role {
 

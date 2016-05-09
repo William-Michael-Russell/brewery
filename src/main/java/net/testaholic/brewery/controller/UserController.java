@@ -1,8 +1,9 @@
-package eu.kielczewski.example.controller;
+package net.testaholic.brewery.controller;
 
-import eu.kielczewski.example.domain.UserCreateForm;
-import eu.kielczewski.example.domain.validator.UserCreateFormValidator;
-import eu.kielczewski.example.service.user.UserService;
+import net.testaholic.brewery.domain.UserCreateForm;
+import net.testaholic.brewery.domain.validator.UserCreateFormValidator;
+import net.testaholic.brewery.service.user.UserService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +12,16 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.validation.Valid;
 import java.util.NoSuchElementException;
+
+import javax.validation.Valid;
 
 @Controller
 public class UserController {

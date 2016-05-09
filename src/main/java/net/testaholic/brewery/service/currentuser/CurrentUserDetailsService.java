@@ -1,8 +1,8 @@
-package eu.kielczewski.example.service.currentuser;
+package net.testaholic.brewery.service.currentuser;
 
-import eu.kielczewski.example.domain.CurrentUser;
-import eu.kielczewski.example.domain.User;
-import eu.kielczewski.example.service.user.UserService;
+import net.testaholic.brewery.domain.CurrentUser;
+import net.testaholic.brewery.domain.User;
+import net.testaholic.brewery.service.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

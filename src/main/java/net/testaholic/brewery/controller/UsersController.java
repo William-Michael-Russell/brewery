@@ -1,6 +1,6 @@
-package eu.kielczewski.example.controller;
+package net.testaholic.brewery.controller;
 
-import eu.kielczewski.example.service.user.UserService;
+import net.testaholic.brewery.service.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

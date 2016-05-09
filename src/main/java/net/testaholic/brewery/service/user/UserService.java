@@ -1,7 +1,7 @@
-package eu.kielczewski.example.service.user;
+package net.testaholic.brewery.service.user;
 
-import eu.kielczewski.example.domain.User;
-import eu.kielczewski.example.domain.UserCreateForm;
+import net.testaholic.brewery.domain.User;
+import net.testaholic.brewery.domain.UserCreateForm;
 
 import java.util.Collection;
 import java.util.Optional;

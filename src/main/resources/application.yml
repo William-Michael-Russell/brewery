@@ -1,0 +1,14 @@
+# suppress inspection "UnusedProperty" for whole file
+logging:
+    level:
+        org:
+            springframework: WARN
+            hibernate: WARN
+        eu:
+          kielczewski: DEBUG
+
+spring:
+    freemarker:
+        template-loader-path: /WEB-INF/ftl
+        expose-request-attributes: true
+        expose-spring-macro-helpers: true

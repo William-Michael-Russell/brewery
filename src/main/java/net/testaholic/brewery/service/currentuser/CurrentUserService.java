@@ -1,6 +1,6 @@
-package eu.kielczewski.example.service.currentuser;
+package net.testaholic.brewery.service.currentuser;
 
-import eu.kielczewski.example.domain.CurrentUser;
+import net.testaholic.brewery.domain.CurrentUser;
 
 public interface CurrentUserService {
 

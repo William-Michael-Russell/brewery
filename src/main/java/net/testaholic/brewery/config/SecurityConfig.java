@@ -1,4 +1,4 @@
-package eu.kielczewski.example.config;
+package net.testaholic.brewery.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;

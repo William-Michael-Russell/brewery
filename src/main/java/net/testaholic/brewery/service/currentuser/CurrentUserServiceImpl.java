@@ -1,7 +1,7 @@
-package eu.kielczewski.example.service.currentuser;
+package net.testaholic.brewery.service.currentuser;
 
-import eu.kielczewski.example.domain.CurrentUser;
-import eu.kielczewski.example.domain.Role;
+import net.testaholic.brewery.domain.CurrentUser;
+import net.testaholic.brewery.domain.Role;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
