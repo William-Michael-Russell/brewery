@@ -1,54 +1,50 @@
 <#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
-<#-- @ftlvariable name="form" type="eu.kielczewski.example.domain.UserCreateForm" -->
+<#-- @ftlvariable name="form" type="net.testaholic.brewery.domain.UserCreateForm" -->
 <#import "/spring.ftl" as spring>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Create a new user</title>
-</head>
-<body>
-<nav role="navigation">
-    <ul>
-        <li><a href="/">Home</a></li>
-    </ul>
-</nav>
+<@layout/>
 
-<h1>Create a new user</h1>
+<@nav_bar>
 
-<form role="form" name="form" action="" method="post">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+<div class="container">
 
-    <div>
-        <label for="email">Email address</label>
-        <input type="email" name="email" id="email" value="${form.email}" required autofocus/>
-    </div>
-    <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required/>
-    </div>
-    <div>
-        <label for="passwordRepeated">Repeat</label>
-        <input type="password" name="passwordRepeated" id="passwordRepeated" required/>
-    </div>
-    <div>
-        <label for="role">Role</label>
-        <select name="role" id="role" required>
-            <option <#if form.role == 'USER'>selected</#if>>USER</option>
-            <option <#if form.role == 'ADMIN'>selected</#if>>ADMIN</option>
-        </select>
-    </div>
-    <button type="submit">Save</button>
-</form>
+    <form name="form" role="form" action="" method="post">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-<@spring.bind "form" />
-<#if spring.status.error>
-<ul>
-    <#list spring.status.errorMessages as error>
-        <li>${error}</li>
-    </#list>
-</ul>
-</#if>
+        <h2 class="form-signin-heading">Create New User...</h2>
+        <div>
+            <label for="email" class="sr-only">Email address</label>
+            <input type="email" value="${form.email}" name="email" id="email" class="form-control"
+                   placeholder="Email address" required
+                   autofocus>
+        </div>
 
-</body>
-</html>
+        <label for="password" class="sr-only">Password</label>
+        <input name="password" id="password" class="form-control" placeholder="Password" required>
+
+        <label for="passwordRepeated" class="sr-only">Repeat</label>
+        <input name="passwordRepeated" id="passwordRepeated" class="form-control" placeholder="Password">
+        <div>
+            <label for="role">Role</label>
+            <select name="role" id="role" required>
+                <option <#if form.role == 'USER'>selected</#if>>USER</option>
+                <option <#if form.role == 'ADMIN'>selected</#if>>ADMIN</option>
+                <option <#if form.role == 'ADMIN'>selected</#if>>MEMBER</option>
+            </select>
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+    </form>
+
+    <@spring.bind "form" />
+    <#if spring.status.error>
+        <ul>
+            <#list spring.status.errorMessages as error>
+                <li>${error}</li>
+            </#list>
+        </ul>
+    </#if>
+
+</div> <!-- /container -->
+
+
+</@nav_bar>

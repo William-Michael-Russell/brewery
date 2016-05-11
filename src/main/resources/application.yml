@@ -12,3 +12,5 @@ spring:
         template-loader-path: /WEB-INF/ftl
         expose-request-attributes: true
         expose-spring-macro-helpers: true
+        settings:
+            auto_include: layout/application.ftl

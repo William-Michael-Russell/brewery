@@ -49,7 +49,9 @@ public class UserController {
                 .orElseThrow(() -> new NoSuchElementException(String.format("User=%s not found", id))));
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //comment this out for a bug.
+    // bug that a non-admin and preview the create page
+//    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/user/create", method = RequestMethod.GET)
     public ModelAndView getUserCreatePage() {
         LOGGER.debug("Getting user create form");
@@ -70,7 +72,8 @@ public class UserController {
             // probably email already exists - very rare case when multiple admins are adding same user
             // at the same time and form validation has passed for more than one of them.
             LOGGER.warn("Exception occurred when trying to save the user, assuming duplicate email", e);
-            bindingResult.reject("email.exists", "Email already exists");
+            //purpose bug
+//            bindingResult.reject("email.exists", "Email already exists");
             return "user_create";
         }
         // ok, redirect
