@@ -1,11 +1,5 @@
 package net.testaholic.brewery.controller.json;
 
-import net.testaholic.brewery.domain.User;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 /**
  * Created by williamrussell on 5/10/16.
  */

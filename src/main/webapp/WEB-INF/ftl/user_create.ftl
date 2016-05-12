@@ -1,11 +1,9 @@
 <#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
-<#-- @ftlvariable name="form" type="net.testaholic.brewery.domain.UserCreateForm" -->
+<#-- @ftlvariable name="form" type="net.testaholic.brewery.domain.user.UserCreateForm" -->
 <#import "/spring.ftl" as spring>
 <@layout/>
 
 <@nav_bar>
-
-<div class="container">
 
     <form name="form" role="form" action="" method="post">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -22,14 +20,15 @@
         <input name="password" id="password" class="form-control" placeholder="Password" required>
 
         <label for="passwordRepeated" class="sr-only">Repeat</label>
-        <input name="passwordRepeated" id="passwordRepeated" class="form-control" placeholder="Password">
+        <label for="role">Role</label>
+        <select name="role" id="role" required>
+            <option <#if form.role == 'USER'>selected</#if>>USER</option>
+            <option <#if form.role == 'ADMIN'>selected</#if>>ADMIN</option>
+            <option <#if form.role == 'ADMIN'>selected</#if>>MEMBER</option>
+        </select>
+        <input name="passwordRepeated" id="passwordRepeated" class="form-control" placeholder="Verify Password">
         <div>
-            <label for="role">Role</label>
-            <select name="role" id="role" required>
-                <option <#if form.role == 'USER'>selected</#if>>USER</option>
-                <option <#if form.role == 'ADMIN'>selected</#if>>ADMIN</option>
-                <option <#if form.role == 'ADMIN'>selected</#if>>MEMBER</option>
-            </select>
+
         </div>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
@@ -43,8 +42,5 @@
             </#list>
         </ul>
     </#if>
-
-</div> <!-- /container -->
-
 
 </@nav_bar>

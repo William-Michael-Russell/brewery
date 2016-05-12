@@ -1,7 +1,7 @@
 package net.testaholic.brewery.service.user;
 
-import net.testaholic.brewery.domain.User;
-import net.testaholic.brewery.domain.UserCreateForm;
+import net.testaholic.brewery.domain.user.User;
+import net.testaholic.brewery.domain.user.UserCreateForm;
 import net.testaholic.brewery.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

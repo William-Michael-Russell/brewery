@@ -1,4 +1,4 @@
-package net.testaholic.brewery.domain;
+package net.testaholic.brewery.domain.user;
 
 import javax.persistence.*;
 
@@ -11,10 +11,10 @@ public class User {
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
-    @Column(name = "email", nullable = false, length = 34, unique = true)
+    @Column(name = "email", nullable = false, length = 30, unique = true)
     private String email;
 
-    @Column(name = "password_hash")
+    @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 
     @Column(name = "role", nullable = false)

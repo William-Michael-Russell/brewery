@@ -1,4 +1,4 @@
-package net.testaholic.brewery.domain;
+package net.testaholic.brewery.domain.user;
 
 import org.hibernate.validator.constraints.NotEmpty;
 

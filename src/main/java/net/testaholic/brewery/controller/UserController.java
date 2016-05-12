@@ -1,9 +1,10 @@
 package net.testaholic.brewery.controller;
 
-import net.testaholic.brewery.domain.UserCreateForm;
+import net.testaholic.brewery.domain.user.UserCreateForm;
 import net.testaholic.brewery.domain.validator.UserCreateFormValidator;
 import net.testaholic.brewery.service.user.UserService;
 
+import net.testaholic.brewery.utils.EmailValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,8 +51,7 @@ public class UserController {
     }
 
     //comment this out for a bug.
-    // bug that a non-admin and preview the create page
-//    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/user/create", method = RequestMethod.GET)
     public ModelAndView getUserCreatePage() {
         LOGGER.debug("Getting user create form");
@@ -66,14 +66,16 @@ public class UserController {
             // failed validation
             return "user_create";
         }
+        if(!EmailValidator.validate(form.getEmail())){
+            bindingResult.reject("Please enter a valid email format.");
+        }
         try {
             userService.create(form);
         } catch (DataIntegrityViolationException e) {
             // probably email already exists - very rare case when multiple admins are adding same user
             // at the same time and form validation has passed for more than one of them.
             LOGGER.warn("Exception occurred when trying to save the user, assuming duplicate email", e);
-            //purpose bug
-//            bindingResult.reject("email.exists", "Email already exists");
+            bindingResult.reject("email.exists", "Email already exists");
             return "user_create";
         }
         // ok, redirect

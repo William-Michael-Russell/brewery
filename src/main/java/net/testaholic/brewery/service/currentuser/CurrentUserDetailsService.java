@@ -1,7 +1,7 @@
 package net.testaholic.brewery.service.currentuser;
 
-import net.testaholic.brewery.domain.CurrentUser;
-import net.testaholic.brewery.domain.User;
+import net.testaholic.brewery.domain.user.CurrentUser;
+import net.testaholic.brewery.domain.user.User;
 import net.testaholic.brewery.service.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

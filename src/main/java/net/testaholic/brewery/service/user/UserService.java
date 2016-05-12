@@ -1,7 +1,7 @@
 package net.testaholic.brewery.service.user;
 
-import net.testaholic.brewery.domain.User;
-import net.testaholic.brewery.domain.UserCreateForm;
+import net.testaholic.brewery.domain.user.User;
+import net.testaholic.brewery.domain.user.UserCreateForm;
 
 import java.util.Collection;
 import java.util.Optional;
