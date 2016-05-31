@@ -6,6 +6,8 @@ import javax.validation.constraints.NotNull;
 
 public class UserCreateForm {
 
+    private Long id;
+
     @NotEmpty
     private String email = "";
 
@@ -15,8 +17,39 @@ public class UserCreateForm {
     @NotEmpty
     private String passwordRepeated = "";
 
+    private String currentPassword;
+
     @NotNull
     private Role role = Role.USER;
+
+    public UserCreateForm() {
+    }
+
+    public UserCreateForm(String email, String password, String role) {
+        this.email = email;
+        this.password = password;
+        switch (role.toLowerCase()) {
+            case "member":
+                this.role = Role.MEMBER;
+                break;
+            case "admin":
+                this.role = Role.ADMIN;
+                break;
+            case "user":
+                this.role = Role.USER;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getEmail() {
         return email;
@@ -48,6 +81,14 @@ public class UserCreateForm {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getCurrentPassword() {
+        return currentPassword;
+    }
+
+    public void setCurrentPassword(String currentPassword) {
+        this.currentPassword = currentPassword;
     }
 
     @Override

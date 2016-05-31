@@ -1,5 +1,7 @@
 package net.testaholic.brewery.service.user;
 
+import net.testaholic.brewery.domain.location.Location;
+import net.testaholic.brewery.domain.location.LocationCreateForm;
 import net.testaholic.brewery.domain.user.User;
 import net.testaholic.brewery.domain.user.UserCreateForm;
 import net.testaholic.brewery.repository.UserRepository;
@@ -43,12 +45,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User update(UserCreateForm form, long id){
+        User user = parseUser(form);
+        user.setId(id);
+        return userRepository.save(user);
+    }
+
+
+    @Override
     public User create(UserCreateForm form) {
+        return userRepository.save(parseUser(form));
+    }
+
+    private User parseUser(UserCreateForm form){
         User user = new User();
         user.setEmail(form.getEmail());
         user.setPasswordHash(new BCryptPasswordEncoder().encode(form.getPassword()));
         user.setRole(form.getRole());
-        return userRepository.save(user);
+        return user;
     }
 
 }

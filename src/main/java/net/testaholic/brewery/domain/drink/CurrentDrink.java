@@ -20,7 +20,7 @@ public class CurrentDrink {
 
     @Override
     public String toString() {
-        return "CurrentUser{" +
+        return "CurrentBartender{" +
                 "drink=" + drink +
                 "} " + super.toString();
     }

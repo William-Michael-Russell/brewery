@@ -1,7 +1,6 @@
 package net.testaholic.brewery.repository;
 
 import net.testaholic.brewery.domain.drink.Drink;
-import net.testaholic.brewery.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

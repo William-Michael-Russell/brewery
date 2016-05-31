@@ -21,6 +21,31 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    public User() {
+    }
+
+    public User(String email, String password, String role) {
+        this.email = email;
+        this.passwordHash = password;
+        switch (role.toLowerCase()) {
+            case "member":
+                this.role = Role.MEMBER;
+                break;
+            case "admin":
+                this.role = Role.ADMIN;
+                break;
+            case "user":
+                this.role = Role.USER;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }
@@ -49,13 +74,4 @@ public class User {
         this.role = role;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email.replaceFirst("@.*", "@***") +
-                ", passwordHash='" + passwordHash.substring(0, 10) +
-                ", role=" + role +
-                '}';
-    }
 }

@@ -21,9 +21,31 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests().antMatchers("/greeting/**").permitAll();
+//        http.authorizeRequests().antMatchers("/index.html").permitAll();
+        http.authorizeRequests().antMatchers("/*.css").permitAll();
+//        http.authorizeRequests().antMatchers("/resources/static/**").permitAll();
+//        http.authorizeRequests().antMatchers("/resources/**").permitAll();
+        http.authorizeRequests().antMatchers("/static/**").permitAll();
+
+//        http.authorizeRequests().antMatchers("/resources/**").permitAll();
+//        http.authorizeRequests().antMatchers("/**").permitAll();
+//        http.authorizeRequests().antMatchers("**").permitAll();
+//        http.authorizeRequests().antMatchers("findme.txt").permitAll();
+//        http.authorizeRequests().antMatchers("/findme.txt").permitAll();
+//        http.authorizeRequests().antMatchers("/public/**").permitAll();
+//
+//        http.authorizeRequests().anyRequest().permitAll();
         http.authorizeRequests()
                 .antMatchers("/", "/public/**").permitAll()
-                .antMatchers("/users/**").hasAuthority("ADMIN")
+                .antMatchers("/user/update").permitAll()
+                //allow
+                .antMatchers("/drinks").permitAll()
+                .antMatchers("/user/create").permitAll()
+                .antMatchers("/contact").permitAll()
+                .antMatchers("/location/**").permitAll()
+                .antMatchers("/appetizers").permitAll()
+                .antMatchers("/users/**").permitAll()
                 .anyRequest().fullyAuthenticated()
                 .and()
                 .formLogin()
@@ -39,6 +61,9 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .rememberMe();
+//        http
+//                .authorizeRequests()
+//                .anyRequest().permitAll();
     }
 
     @Override
@@ -46,6 +71,14 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(new BCryptPasswordEncoder());
+
     }
+
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth
+//                .inMemoryAuthentication()
+//                .withUser("demo@localhost.com").password("demo").roles("ADMIN");
+//    }
 
 }

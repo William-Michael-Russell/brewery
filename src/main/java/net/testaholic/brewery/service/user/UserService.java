@@ -16,4 +16,6 @@ public interface UserService {
 
     User create(UserCreateForm form);
 
+    User update(UserCreateForm form, long id);
+
 }

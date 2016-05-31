@@ -42,7 +42,7 @@ public class DrinkCreateForm {
 
     @Override
     public String toString() {
-        return "DrinkCreateForm{" +
+        return "AppetizerCreateForm{" +
                 "drinkName='" + drinkName + '\'' +
                 ", drinkImageUrl='" + drinkImageUrl + '\'' +
                 ", drinkIngredients='" + drinkIngredients + '\'' +

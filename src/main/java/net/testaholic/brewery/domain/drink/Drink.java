@@ -55,7 +55,7 @@ public class Drink {
 
     @Override
     public String toString() {
-        return "Drink{" +
+        return "Bartender{" +
                 "id=" + id +
                 ", drinkName='" + drinkName + '\'' +
                 ", drinkImageUrl='" + drinkImageUrl + '\'' +
