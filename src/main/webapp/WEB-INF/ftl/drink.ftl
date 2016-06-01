@@ -1,22 +1,23 @@
-<#-- @ftlvariable name="drink" type="net.testaholic.brewery.domain.drink.Bartender" -->
+<#-- @ftlvariable name="drink" type="net.testaholic.brewery.domain.drink.Drink" -->
 <@layout>
 <title>List of Drinks</title>
 </@layout>
 
 
 <@nav_bar>
+<br>
 <div class="col-md-9">
-    <h4>${bartender.drinkName}</h4>
+    <h4>${drink.drinkName}</h4>
     <div class="thumbnail">
 
-        <img class="img-responsive" src="${bartender.drinkImageUrl}" alt="">
+        <img class="img-responsive" src="${drink.drinkImageUrl}" alt="">
         <div class="caption-full">
             <#--<h4 class="pull-right">$14.99</h4>-->
 
             <#--</h4>-->
             <h4>
                 Ingredients</h4>
-            <p>${bartender.drinkIngredients}</p>
+            <p>${drink.drinkIngredients}</p>
         </div>
         <div class="ratings">
             <p class="pull-right">3 reviews</p>

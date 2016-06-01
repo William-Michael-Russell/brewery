@@ -1,4 +1,4 @@
-<#-- @ftlvariable name="drinks" type="java.util.List<net.testaholic.brewery.domain.User>" -->
+<#-- @ftlvariable name="drinks" type="java.util.List<net.testaholic.brewery.domain.drink.Drink>" -->
 <@layout>
 <title>List of Drinks</title>
 </@layout>
@@ -9,20 +9,20 @@
     <div class="container">
         <div class="row">
 
-            <#list drinks as bartender>
+            <#list drinks as drink>
 
-                <#if bartender?counter % 4 ==  0>
+                <#if drink?counter % 4 ==  0>
                     <div class="clear sep__1"></div>
                 </#if>
                 <div class="grid_4">
                     <div class="gall_block">
                         <div class="maxheight">
-                            <a href="${bartender.drinkImageUrl}" class="gall_item"><img src="${bartender.drinkImageUrl}" alt=""></a>
+                            <a href="${drink.drinkImageUrl}" class="gall_item"><img src="${drink.drinkImageUrl}" alt=""></a>
                             <div class="gall_bot">
-                                <div class="text1"><a href="#">${bartender.drinkIngredients} </a></div>
-                            ${bartender.drinkIngredients}
+                                <div class="text1"><a href="#">${drink.drinkIngredients} </a></div>
+                            ${drink.drinkIngredients}
                                 <br>
-                                <a href="/bartender/${bartender.id}" class="btn">more</a></div>
+                                <a href="/drink/${drink.id}" class="btn">more</a></div>
                         </div>
                     </div>
                 </div>
