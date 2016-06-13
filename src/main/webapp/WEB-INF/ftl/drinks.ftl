@@ -5,7 +5,7 @@
 
 
 <@nav_bar>
-<section class="content gallery pad1">
+<section class="content pad1">
     <div class="container">
         <div class="row">
 
@@ -14,13 +14,17 @@
                 <#if drink?counter % 4 ==  0>
                     <div class="clear sep__1"></div>
                 </#if>
-                <div class="grid_4">
+                <div class="col-md-4">
                     <div class="gall_block">
                         <div class="maxheight">
+                            <br>
+                            <div class="text1" align="center">${drink.drinkName}</div>
+                            <br>
                             <a href="${drink.drinkImageUrl}" class="gall_item"><img src="${drink.drinkImageUrl}" alt=""></a>
                             <div class="gall_bot">
-                                <div class="text1"><a href="#">${drink.drinkIngredients} </a></div>
-                            ${drink.drinkIngredients}
+
+                                <div class="text1">${drink.drinkIngredients}</div>
+
                                 <br>
                                 <a href="/drink/${drink.id}" class="btn">more</a></div>
                         </div>

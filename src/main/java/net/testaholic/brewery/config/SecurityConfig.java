@@ -28,17 +28,15 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        http.authorizeRequests().antMatchers("/resources/**").permitAll();
         http.authorizeRequests().antMatchers("/static/**").permitAll();
 
-//        http.authorizeRequests().antMatchers("/resources/**").permitAll();
-//        http.authorizeRequests().antMatchers("/**").permitAll();
-//        http.authorizeRequests().antMatchers("**").permitAll();
-//        http.authorizeRequests().antMatchers("findme.txt").permitAll();
-//        http.authorizeRequests().antMatchers("/findme.txt").permitAll();
-//        http.authorizeRequests().antMatchers("/public/**").permitAll();
-//
-//        http.authorizeRequests().anyRequest().permitAll();
+        //high security risk, provides no authorization and anyone can create account.
+        //this is fine for now.
+        http.csrf().ignoringAntMatchers("/v1/**");
+
         http.authorizeRequests()
                 .antMatchers("/", "/public/**").permitAll()
                 .antMatchers("/user/update").permitAll()
+                .antMatchers("/v1/**").permitAll()
+                .antMatchers("/v1/user/create").permitAll()
                 //allow
                 .antMatchers("/drinks").permitAll()
                 .antMatchers("/user/create").permitAll()
@@ -61,9 +59,6 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .rememberMe();
-//        http
-//                .authorizeRequests()
-//                .anyRequest().permitAll();
     }
 
     @Override
@@ -73,12 +68,4 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(new BCryptPasswordEncoder());
 
     }
-
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//                .inMemoryAuthentication()
-//                .withUser("demo@localhost.com").password("demo").roles("ADMIN");
-//    }
-
 }

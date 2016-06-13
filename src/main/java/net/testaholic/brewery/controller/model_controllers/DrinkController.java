@@ -40,6 +40,8 @@ public class DrinkController {
         return "drink_create";
     }
 
+
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/drink/create", method = RequestMethod.POST)
     public String handleDrinkCreateForm(@Valid @ModelAttribute("form") DrinkCreateForm form, BindingResult bindingResult) {
         LOGGER.debug("Processing user create form={}, bindingResult={}", form, bindingResult);

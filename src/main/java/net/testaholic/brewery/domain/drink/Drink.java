@@ -20,6 +20,7 @@ public class Drink {
     @Column(name = "drink_ingredients", nullable = false)
     private String drinkIngredients;
 
+
     public Long getId() {
         return id;
 
