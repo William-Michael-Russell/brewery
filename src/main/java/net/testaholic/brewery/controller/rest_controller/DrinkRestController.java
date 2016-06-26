@@ -5,21 +5,21 @@ import net.testaholic.brewery.domain.drink.Drink;
 import net.testaholic.brewery.domain.drink.DrinkCreateForm;
 import net.testaholic.brewery.domain.validator.DrinkCreateFormValidator;
 import net.testaholic.brewery.service.drink.DrinkService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.orm.jpa.JpaSystemException;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.validation.Valid;
 import java.util.Collection;
-import java.util.NoSuchElementException;
-import java.util.regex.Pattern;
 
 @Controller
 @RequestMapping("/v1")
@@ -68,9 +68,15 @@ public class DrinkRestController {
 
     @ResponseBody
     @RequestMapping("/drink/{id}")
-    public Drink getDrinkPage(@PathVariable Long id) {
+    public Drink getDrinkById(@PathVariable Long id) {
         LOGGER.debug("Getting user page for user={}", id);
         return  drinkService.getDrinkById(id).get();
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/drink/{id}", method = RequestMethod.DELETE)
+    public void deleteDrinkById(@PathVariable Long id) {
+        LOGGER.debug("Getting user page for user={}", id);
+        drinkService.deleteDrinkById(id);
+    }
 }

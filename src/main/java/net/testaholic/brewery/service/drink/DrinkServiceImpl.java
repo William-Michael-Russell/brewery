@@ -51,4 +51,9 @@ public class DrinkServiceImpl implements DrinkService {
         drink.setDrinkIngredients(form.getDrinkIngredients());
         return drinkRepository.save(drink);
     }
+
+    @Override
+    public void deleteDrinkById(long id){
+         drinkRepository.deleteDrinkById(id);
+    }
 }

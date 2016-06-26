@@ -10,6 +10,8 @@ public interface DrinkService {
 
     Optional<Drink> getDrinkById(long id);
 
+    void deleteDrinkById(long id);
+
     Optional<Drink> getDrinkByName(String name);
 
     Drink create(DrinkCreateForm form);
