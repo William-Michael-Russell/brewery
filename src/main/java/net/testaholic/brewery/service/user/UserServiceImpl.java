@@ -1,8 +1,6 @@
 package net.testaholic.brewery.service.user;
 
-import net.testaholic.brewery.domain.location.Location;
-import net.testaholic.brewery.domain.location.LocationCreateForm;
-import net.testaholic.brewery.domain.user.User;
+import net.testaholic.brewery.domain.user.Users;
 import net.testaholic.brewery.domain.user.UserCreateForm;
 import net.testaholic.brewery.repository.UserRepository;
 import org.slf4j.Logger;
@@ -27,42 +25,42 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> getUserById(long id) {
+    public Optional<Users> getUserById(long id) {
         LOGGER.debug("Getting user={}", id);
         return Optional.ofNullable(userRepository.findOne(id));
     }
 
     @Override
-    public Optional<User> getUserByEmail(String email) {
+    public Optional<Users> getUserByEmail(String email) {
         LOGGER.debug("Getting user by email={}", email.replaceFirst("@.*", "@***"));
         return userRepository.findOneByEmail(email);
     }
 
     @Override
-    public Collection<User> getAllUsers() {
+    public Collection<Users> getAllUsers() {
         LOGGER.debug("Getting all users");
         return userRepository.findAll(new Sort("email"));
     }
 
     @Override
-    public User update(UserCreateForm form, long id){
-        User user = parseUser(form);
-        user.setId(id);
-        return userRepository.save(user);
+    public Users update(UserCreateForm form, long id){
+        Users users = parseUser(form);
+        users.setId(id);
+        return userRepository.save(users);
     }
 
 
     @Override
-    public User create(UserCreateForm form) {
+    public Users create(UserCreateForm form) {
         return userRepository.save(parseUser(form));
     }
 
-    private User parseUser(UserCreateForm form){
-        User user = new User();
-        user.setEmail(form.getEmail());
-        user.setPasswordHash(new BCryptPasswordEncoder().encode(form.getPassword()));
-        user.setRole(form.getRole());
-        return user;
+    private Users parseUser(UserCreateForm form){
+        Users users = new Users();
+        users.setEmail(form.getEmail());
+        users.setPasswordHash(new BCryptPasswordEncoder().encode(form.getPassword()));
+        users.setRole(form.getRole());
+        return users;
     }
 
 }

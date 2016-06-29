@@ -1,6 +1,6 @@
 package net.testaholic.brewery.controller.model_controllers;
 
-import net.testaholic.brewery.domain.user.User;
+import net.testaholic.brewery.domain.user.Users;
 import net.testaholic.brewery.domain.user.UserCreateForm;
 import net.testaholic.brewery.domain.validator.UserCreateFormValidator;
 import net.testaholic.brewery.domain.validator.UserUpdateFormValidator;
@@ -13,14 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
-import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -97,7 +94,7 @@ public class UserController {
                 modelAndView.addObject("password_no_match", "The new password and verify password fields do not match");
             }
 
-            Optional<User> user = userService.getUserById(id);
+            Optional<Users> user = userService.getUserById(id);
             Principal principal = SecurityContextHolder.getContext().getAuthentication();
             if (userService.getUserByEmail(principal.getName()).get().getRole().toString().equalsIgnoreCase("ADMIN")) {
                 userService.update(createForm, id);
@@ -154,7 +151,7 @@ public class UserController {
             bindingResult.reject("Please enter a valid email format.");
         }
         try {
-            User user = userService.create(form);
+            Users users = userService.create(form);
             request.login(form.getEmail(), form.getPassword());
         } catch (DataIntegrityViolationException e) {
 

@@ -1,7 +1,7 @@
 package net.testaholic.brewery.service.currentuser;
 
 import net.testaholic.brewery.domain.user.CurrentUser;
-import net.testaholic.brewery.domain.user.User;
+import net.testaholic.brewery.domain.user.Users;
 import net.testaholic.brewery.service.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,9 +24,9 @@ public class CurrentUserDetailsService implements UserDetailsService {
     @Override
     public CurrentUser loadUserByUsername(String email) throws UsernameNotFoundException {
         LOGGER.debug("Authenticating user with email={}", email.replaceFirst("@.*", "@***"));
-        User user = userService.getUserByEmail(email)
+        Users users = userService.getUserByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("User with email=%s was not found", email)));
-        return new CurrentUser(user);
+        return new CurrentUser(users);
     }
 
 }

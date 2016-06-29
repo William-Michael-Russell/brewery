@@ -22,6 +22,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Collection;
 
 @Controller
+//1. localhost:8080/v1/drinks
+//2. localhost:8080/v1/drink/create
+//   {
+//    "variables" : 1
+//    }
 @RequestMapping("/v1")
 public class DrinkRestController {
 
@@ -56,7 +61,7 @@ public class DrinkRestController {
         try {
             return  drinkService.create(form);
         } catch (DataIntegrityViolationException | JpaSystemException e) {
-            throw new InvalidRequestException("An error while saving the drink has occured, please try again", bindingResult);
+            throw new InvalidRequestException("An error while saving the drink has occurred, please try again", bindingResult);
         }
     }
 

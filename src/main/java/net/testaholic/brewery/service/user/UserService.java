@@ -1,6 +1,6 @@
 package net.testaholic.brewery.service.user;
 
-import net.testaholic.brewery.domain.user.User;
+import net.testaholic.brewery.domain.user.Users;
 import net.testaholic.brewery.domain.user.UserCreateForm;
 
 import java.util.Collection;
@@ -8,14 +8,14 @@ import java.util.Optional;
 
 public interface UserService {
 
-    Optional<User> getUserById(long id);
+    Optional<Users> getUserById(long id);
 
-    Optional<User> getUserByEmail(String email);
+    Optional<Users> getUserByEmail(String email);
 
-    Collection<User> getAllUsers();
+    Collection<Users> getAllUsers();
 
-    User create(UserCreateForm form);
+    Users create(UserCreateForm form);
 
-    User update(UserCreateForm form, long id);
+    Users update(UserCreateForm form, long id);
 
 }

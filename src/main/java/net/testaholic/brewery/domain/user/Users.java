@@ -3,8 +3,10 @@ package net.testaholic.brewery.domain.user;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "users")
+@SecondaryTable(name = "bartender", pkJoinColumns = { @PrimaryKeyJoinColumn(name = "id") })
+
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,10 +24,10 @@ public class User {
     private Role role;
 
 
-    public User() {
+    public Users() {
     }
 
-    public User(String email, String password, String role) {
+    public Users(String email, String password, String role) {
         this.email = email;
         this.passwordHash = password;
         switch (role.toLowerCase()) {
